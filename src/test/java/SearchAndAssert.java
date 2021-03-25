@@ -15,6 +15,15 @@ public class SearchAndAssert {
         $("[data-content=Wiki]").click();
         $(byText("Soft assertions")).shouldBe(visible).click();
         $(".markdown-body").shouldHave(text("Using JUnit5 extend test class"));
+    }
 
-}
+    @Test
+    void dragAndDrop() {
+
+        open("https://the-internet.herokuapp.com/drag_and_drop");
+        $("#column-a").dragAndDropTo("#column-b");
+        $("#column-a").shouldHave(text("B"));
+        $("#column-b").shouldHave(text("A"));
+    }
+
 }
